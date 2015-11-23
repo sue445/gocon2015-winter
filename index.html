@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
 
-<title>Slides</title>
+<title>GoがGoでGo!プリンセスプリキュアを作った</title>
 
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="sue445">
 <meta name="generator" content="reveal-ck 3.3.0">
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="css/reveal.css">
-<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
 <!-- Code syntax highlighting -->
 <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -44,9 +44,9 @@
   <div class="slides">
     <section>
 
-<h2>GoがGoでプリキュアを作った</h2>
+<h2>GoがGoでGo!プリンセスプリキュアを作った</h2>
 
-<p>sue445</p>
+<p>Go Sueyoshi a.k.a sue445</p>
 
 <p>2015/12/06 Go Conference 2015 Winter</p>
 
@@ -58,22 +58,21 @@
 <p><a href="https://twitter.com/sue445"><img src="img/sue445.png" alt="sue445"></a></p>
 
 <ul>
-<li>Go Sueyoshi a.k.a <a href="https://twitter.com/sue445">sue445</a>
+<li>Go Sueyoshi a.k.a <a href="https://twitter.com/sue445">@sue445</a>
 
 <ul>
 <li>golang歴 3ヶ月</li>
-<li>Go歴 33年</li>
+<li>Go歴 33年 (33歳)</li>
+<li>【警告】Twitterは上級者向けのアカウントなので決してフォローしないでください！</li>
 </ul>
 </li>
-<li>
-<a href="http://www.drecom.co.jp/">株式会社ドリコム</a> 所属
+<li>Railsの会社でサーバサイド全般を浅く広く見守るお仕事
 
 <ul>
 <li>インフラ、アプリ、ライブラリ、社内ツールetc</li>
-<li>サーバサイド全般を浅く広く見守るお仕事</li>
 </ul>
 </li>
-<li>「ドリコムのプリキュアおじさん」</li>
+<li>会社ではプリキュアおじさんと呼ばれています</li>
 </ul>
 
 </section>
@@ -88,15 +87,219 @@
 
 <h2>【本妻】キュアピース</h2>
 
-<p><img src="img/cure_peace.jpg" alt="cure_peace"></p>
+<p><img src="img/cure_peace.png" alt="cure_peace"></p>
 
 </section>
 <section>
 
 <h2>Agenda</h2>
 
+<ul>
+<li>「Go!プリンセスプリキュア」とは？</li>
+<li>GoPrecureとは</li>
+<li>使い方</li>
+<li>苦労したこと</li>
+<li>他言語でのプリキュア実装の紹介</li>
+</ul>
+
 </section>
 <section>
+
+<h2>「Go!プリンセスプリキュア」とは</h2>
+
+<p>日曜朝8:30からテレビ朝日系で放映しているアニメ</p>
+
+<ul>
+<li><a href="http://www.toei-anim.co.jp/tv/precure/">http://www.toei-anim.co.jp/tv/precure/</a></li>
+<li><a href="http://asahi.co.jp/precure/princess/">http://asahi.co.jp/precure/princess/</a></li>
+</ul>
+
+</section>
+<section>
+
+<h2>GoPrecureとは</h2>
+
+<p>「Go!プリンセスプリキュア」のgolang実装です</p>
+
+<p><a href="https://github.com/sue445/goprecure">https://github.com/sue445/goprecure</a></p>
+
+</section>
+<section>
+
+<h2>使い方</h2>
+
+</section>
+<section>
+
+<h3>go getしてimport</h3>
+<pre><code class="bash">go get github.com/sue445/goprecure
+</code></pre>
+<pre><code class="go">import github.com/sue445/goprecure
+</code></pre>
+</section>
+<section>
+
+<h3>プリキュアのインスタンスを作成</h3>
+<pre><code class="go">// キュアフローラ
+flora := goprecure.NewCureFlora()
+
+// キュアマーメイド
+mermaid := goprecure.NewCureMermaid()
+
+// キュアトゥインクル
+twinkle := goprecure.NewCureTwinkle()
+
+// キュアスカーレット
+scarlett := goprecure.NewCureScarlett()
+</code></pre>
+</section>
+<section>
+
+<h3>Name で名前を取得</h3>
+<pre><code class="go">flora := goprecure.NewCureFlora()
+
+flora.Name()
+// 春野はるか
+</code></pre>
+</section>
+<section>
+
+<h3>Transform で変身</h3>
+<pre><code class="go">flora.Name()
+// 春野はるか
+
+flora.Transform()
+
+flora.Name()
+// キュアフローラ
+</code></pre>
+</section>
+<section>
+
+<h3>実際にはこんな感じ</h3>
+
+<p><img src="img/flora_transform.gif" alt="flora_transform"></p>
+
+</section>
+<section>
+
+<h3>GoPrecureではフォームチェンジを忠実に再現</h3>
+
+<p><img src="img/flora_exchange.gif" alt="flora_exchange"></p>
+
+</section>
+<section>
+
+<h3>各プリキュアに対応するドレスアップキー</h3>
+<pre><code class="go">// キュアフローラ
+g.DressupKeys = []DressupKey{Flora, Rose, Lily, Sakura, Royal}
+
+// キュアマーメイド
+g.DressupKeys = []DressupKey{Mermaid, Ice, Bobble, Sango, Royal}
+
+// キュアトゥインクル
+g.DressupKeys = []DressupKey{Twinkle, Luna, ShootingStar, Ginga, Royal}
+
+// キュアスカーレット
+g.DressupKeys = []DressupKey{Scarlett, Hanabi, Phoenix, Sun, Royal}
+</code></pre>
+</section>
+<section>
+
+<h2>苦労したこと</h2>
+
+<ul>
+<li>GoPrecureに適したREPLがない
+
+<ul>
+<li>4〜5種類くらい使って総合的に <a href="https://github.com/motemen/gore">gore</a> が一番よかったが、直前までの入力を全部実行しているので標準出力に出力するメソッドとの相性が悪い</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section>
+
+<h3>例</h3>
+
+<p><img src="img/gore1.png" alt="transform"></p>
+
+</section>
+<section>
+
+<p><img src="img/gore2.png" alt="exchange"></p>
+
+<p><code>Transform</code> の後に <code>Exchange</code> すると <code>Exchange</code> の標準出力だけ出してほしいのに直前の <code>Transform</code> のも一緒に出るので邪魔</p>
+
+</section>
+<section>
+
+<p>golangのREPLがまだGoPrecureに追いついていない感があるｗ</p>
+
+</section>
+<section>
+
+<h2>プリキュアの他言語での実装の紹介</h2>
+
+<ul>
+<li>Ruby: <a href="https://github.com/sue445/rubicure">rubicure</a> (<a href="https://github.com/sue445" class="user-mention">@sue445</a>)
+
+<ul>
+<li>GitHubのstarも多いしおそらくこれがたぶん一番有名</li>
+</ul>
+</li>
+<li>Perl: <a href="https://github.com/kan/p5-acme-prettycure">Acme::PrettyCure</a> (<a href="https://github.com/kan" class="user-mention">@kan</a>)</li>
+<li>Python: <a href="https://github.com/drillbits/pycure">pycure</a> (<a href="https://github.com/drillbits" class="user-mention">@drillbits</a>)</li>
+<li>Groovy: <a href="https://github.com/ligun/groovycure">groovycure</a> (<a href="https://github.com/ligun" class="user-mention">@ligun</a>)</li>
+<li>clojure: <a href="https://github.com/kaosf/clocure">clocure</a> (<a href="https://github.com/kaosf" class="user-mention">@kaosf</a>)</li>
+</ul>
+
+</section>
+<section>
+
+<h2>rubicureとGoPrecureの設計思想の違い</h2>
+
+</section>
+<section>
+
+<h3>rubicureの設計思想</h3>
+
+<ul>
+<li>Rubyの柔軟性を利用してメタプロを大活用
+
+<ul>
+<li>クラスにメソッドはほとんど定義せずに <code>method_missing</code> でymlに飛ばすとか</li>
+</ul>
+</li>
+<li>
+<code>transform!</code>（変身） や <code>attack!</code>（必殺技） など破壊的メソッドには <code>!</code> をつけるRubyの慣習に則った</li>
+<li>基本的にプリキュア全員対応するため特定のシリーズに特化させない汎用的な設計</li>
+<li>rubicureのおかげでRubyの勉強になった</li>
+</ul>
+
+</section>
+<section>
+
+<h3>GoPrecureの設計思想</h3>
+
+<ul>
+<li>静的型付けを意識した設計
+
+<ul>
+<li>
+<code>DresupKey</code> という型を <code>const</code> で定義することにより <code>Exchange</code> に未知のドレスアップキーが引数がわたらないようにした（コンパイルエラーになる）</li>
+</ul>
+</li>
+<li>Go!プリンセスプリキュアだけに特化させることでドレスアップキーとモードチェンジを関連付けた実装が実現した</li>
+<li>GoPrecureのおかげでgolangの勉強になった</li>
+</ul>
+
+</section>
+<section>
+
+<h2>まとめ</h2>
+
+<p>新しい言語を勉強する時は自分の好きなものを実装すると良い。</p>
 
 <!--
   disable uppercase
