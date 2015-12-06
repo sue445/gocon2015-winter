@@ -43,6 +43,8 @@ Go Sueyoshi a.k.a sue445
 ## GoPrecureとは
 「Go!プリンセスプリキュア」のgolang実装です
 
+![goprecure](img/goprecure.png)
+
 https://github.com/sue445/goprecure
 
 ---
