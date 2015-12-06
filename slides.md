@@ -3,6 +3,8 @@ Go Sueyoshi a.k.a sue445
 
 2015/12/06 Go Conference 2015 Winter
 
+（兼 プリキュアAdventCalendar 7日目）
+
 ---
 ## 自己紹介
 [![sue445](img/sue445.png)](https://twitter.com/sue445)
@@ -10,6 +12,7 @@ Go Sueyoshi a.k.a sue445
 * Go Sueyoshi a.k.a [@sue445](https://twitter.com/sue445)
   * golang歴 3ヶ月
   * Go歴 33年 (33歳)
+  * 「Goのエンジニア」ではなく「エンジニアのGo」です（世間一般的にはRubyist）
   * 【警告】Twitterは上級者向けのアカウントなので決してフォローしないでください！
 * Railsの会社でサーバサイド全般を浅く広く見守るお仕事
   * インフラ、アプリ、ライブラリ、社内ツールetc
